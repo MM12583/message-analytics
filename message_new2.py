@@ -1,11 +1,14 @@
  # 讀取檔案
 def r_f(filename) :
+    import progressbar
     data = [] 
     count = 0
+    bar = progressbar.ProgressBar(max_value = 1000000)
     with open (filename, 'r') as f :
         for line in f :
             data.append(line)
             count += 1
+            bar.update(count)
             if count % 250000 == 0 : 
                 print('已讀取' ,len(data), '筆資料')
     return data
